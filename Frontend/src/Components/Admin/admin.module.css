@@ -1,0 +1,139 @@
+.main{
+    display: flex;
+}
+
+.leftSide {
+    width: 60%;
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: transparent transparent; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.leftSide::-webkit-scrollbar {
+    width: 0.2rem;
+}
+
+.leftSide::-webkit-scrollbar-thumb {
+    background-color: transparent; /* WebKit-based browsers (Chrome, Safari) */
+}
+
+.rightSide{
+    border-radius: 10px;
+    width: 40%;
+    height: 100vh;
+}
+
+.header h1{
+    color: #FFDD95;
+    margin: 2rem 0px 0px 2.5rem;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+}
+
+.card{
+    width: 10rem;
+    height: 10rem;
+    background-color: #FFDD95;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tables{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin-top: 5rem ;
+}
+
+.tables div{
+    cursor: pointer;
+}
+
+.rightHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 2.5rem;
+}
+
+.orderCard{
+    border-radius: 10px;
+    background-color: #FFDD95;
+    width: 80%;
+    height: 9rem;
+    display: flex;
+}
+
+.rightContainer{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    overflow-y: scroll;
+}
+
+.rightContainer::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+.img{
+    background-color: #FFDD95;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+.contentRight{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.belowTable{
+    width: 80%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.belowTable button{
+    background-color: white;
+    color: black;
+    margin-left: 10px;
+}
+
+@media(max-width: 980px){
+    .main{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .leftSide{
+        width: 100vw;
+    }
+
+    .rightSide{
+        width: 100vw;
+    }
+}
+

@@ -1,0 +1,92 @@
+.leftSide{
+    background-color: #242428;
+    height: 100vh;
+    width: 100vw; 
+    background-image: url("../../assets/Background.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+.rightSide{
+    background-color: #242428;
+    height: 100vh;
+    width: 1000px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.main{
+    display: flex;
+}
+
+.header{
+    /* border:solid 1px white; */
+    width:80%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFDD95;
+}
+
+.headerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.header button{
+    background-color: #ffffff;
+    color: black;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-weight: bolder;
+}
+
+.header button:hover{
+    background-color: #eeeeee;
+}
+
+.itemList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.totalContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.total{
+    width: 80%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: #eeeeee;
+}
+
+.headerLeft{
+    display: flex;
+}
+
+.emptyCart h1{
+    color:#FFDD95;
+    margin-top: 17rem;
+}
+
+
+
+
+@media (max-width: 650px) {
+    .leftSide {
+      display: none;
+    }
+    
+    .rightSide{
+        width: 100vw;
+    }
+  }
