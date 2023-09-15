@@ -9,6 +9,7 @@ import { RecoilRoot } from "recoil";
 import axios from "axios";
 import { useEffect } from "react";
 import { baseURL } from "./baseURL";
+import LandingPage from "./LandingPage";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
     <div>
       <BrowserRouter>
       <Routes>
+      <Route path="/" element={<LandingPage />} />
       <Route path="cart/:tableno" element={<Cart />}/>
       <Route path="/menu/:tableno" element={<Menu />}/>
       <Route path="/qrcodes" element={<Home/>}/>
