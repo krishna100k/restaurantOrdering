@@ -1,23 +1,23 @@
-import { createContext, useContext, useState } from "react";
-import PropTypes from "prop-types";
+// import { createContext, useContext, useState } from "react";
+// import PropTypes from "prop-types";
 
-const CartContext = createContext();
+// const CartContext = createContext();
 
 
-export const useCartContext = () => {
-  return useContext(CartContext);
-};
+// export const useCartContext = () => {
+//   return useContext(CartContext);
+// };
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+// export const CartProvider = ({ children }) => {
+//   const [cart, setCart] = useState([]);
 
-  return (
-    <CartContext.Provider value={{ cart, setCart }}>
-      {children}
-    </CartContext.Provider>
-  );
-};
+//   return (
+//     <CartContext.Provider value={{ cart, setCart }}>
+//       {children}
+//     </CartContext.Provider>
+//   );
+// };
 
-CartProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+// CartProvider.propTypes = {
+//     children: PropTypes.node.isRequired,
+//   };
