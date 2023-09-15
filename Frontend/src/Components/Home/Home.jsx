@@ -1,6 +1,5 @@
 import { QRCodeCanvas } from "qrcode.react";
 import { Link } from "react-router-dom";
-import { baseURL } from "../../baseURL";
 
 const Home = () => {
 
@@ -11,7 +10,7 @@ const Home = () => {
         const tableNumber = i;
         qrcodeElements.push(
             <div key={i}>
-                <QRCodeCanvas value={`${baseURL}/menu/${tableNumber}`} />
+                <QRCodeCanvas value={`https://qrbites.vercel.app/menu/${tableNumber}`} />
                 Table - <Link to={`/menu/${tableNumber}`}>Table {tableNumber}</Link>
             </div>
         )
