@@ -5,6 +5,7 @@ import { cartState } from "../../Recoil/Atoms/Cart";
 import styles from "./cart.module.css";
 import { Button } from "@mui/material";
 import CartCard from "./CartCard";
+import { baseURL } from "../../baseURL";
 
 const Cart = () => {
   const tableNumber = useParams();
@@ -28,7 +29,7 @@ const Cart = () => {
     };
     if(cart.length > 0){
       axios
-      .post("http://localhost:3000/admin", data)
+      .post(baseURL + "/admin", data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
       .then(alert("Checkout Successfull"))

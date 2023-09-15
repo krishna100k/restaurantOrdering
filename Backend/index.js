@@ -42,7 +42,7 @@ const allOrdersSchema = new mongoose.Schema({
 const AllOrders = new mongoose.model("AllOrders", allOrdersSchema);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Backend Connected");
 });
 
 app.post("/admin", async (req, res) => {

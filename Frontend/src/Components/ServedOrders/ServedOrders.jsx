@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
+import { baseURL } from "../../baseURL";
 const ServedOrders = () => {
-  const socket = io("http://localhost:3000");
+  const socket = io(baseURL);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get("http://localhost:3000/servedorders")
+        .get( baseURL + "/servedorders")
         .then((res) => {
           console.log(res.data);
           setData(res.data);

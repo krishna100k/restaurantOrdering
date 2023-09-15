@@ -6,8 +6,18 @@ import Home from "./Components/Home/Home";
 import Admin from "./Components/Admin/Admin";
 import ServedOrders from "./Components/ServedOrders/ServedOrders";
 import { RecoilRoot } from "recoil";
+import axios from "axios";
+import { useEffect } from "react";
+import { baseURL } from "./baseURL";
 
 function App() {
+
+  useEffect(()=>{
+    axios.get(`${baseURL}`)
+    .then((response)=>console.log(response.data))
+    .catch((err)=> console.log(err))
+  }, [])
+
   return (
     <RecoilRoot>
     <div>

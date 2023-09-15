@@ -6,9 +6,10 @@ import { io } from "socket.io-client";
 import notificationSound from "../../assets/notification.wav";
 import styles from "./admin.module.css";
 import { Button } from "@mui/material";
+import { baseURL } from "../../baseURL";
 
 const Admin = () => {
-  const socket = io("http://localhost:3000");
+  const socket = io(baseURL);
   const [data, setData] = useState([]);
   const [tableData, setTableData] = useState(null);
 
@@ -17,7 +18,7 @@ const Admin = () => {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get("http://localhost:3000/admin")
+        .get(baseURL + "/admin")
         .then((res) => {
           console.log(res.data);
           setData(res.data);
@@ -56,11 +57,11 @@ const Admin = () => {
     }
 
     axios
-      .post("http://localhost:3000/allorders", order)
+      .post(baseURL + "/allorders", order)
       .then((postResponse) => {
         console.log(postResponse);
 
-        return axios.delete(`http://localhost:3000/admin/${id}`);
+        return axios.delete(baseURL + `/admin/${id}`);
       })
       .then((deleteResponse) => {
         console.log(deleteResponse);
@@ -74,7 +75,7 @@ const Admin = () => {
 
   const dontServe = (id) => {
     axios
-      .delete(`http://localhost:3000/admin/${id}`)
+      .delete(baseURL + `/admin/${id}`)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
       .then(alert("Order Will Not Be Served"))
