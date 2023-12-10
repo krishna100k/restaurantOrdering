@@ -1,1 +1,1 @@
-export const baseURL = "https://restaurant-s6l9.onrender.com"
+export const baseURL = "https://restaurantordering-production.up.railway.app"
