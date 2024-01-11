@@ -4,6 +4,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import http from "http";
 import { Server } from "socket.io";
+import Razorpay from "razorpay"
+import crypto from "crypto"
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -104,6 +106,8 @@ app.delete("/admin/:id", async (req, res) => {
   }
 });
 
+
+
 app.get("/servedorders", async (req, res) => {
   const servedOrders = await AllOrders.find({});
   res.status(200).send(servedOrders);
@@ -112,3 +116,58 @@ app.get("/servedorders", async (req, res) => {
 server.listen(port, "0.0.0.0" , () =>
   console.log(`Listening to port on http://localhost:${port}`)
 );
+
+
+//RazorPay
+
+const key_id = "rzp_test_bnGN11FF5fQ3vq";
+const key_secret = "397TbQNvU7ZYRvdMguLXeez6";
+
+app.post("/order", async (req, res) => {
+  try {
+    if (!key_id || !key_secret) {
+      return res.status(400).send("RazorPay key not found");
+    }
+
+    const razorPay = new Razorpay({
+      key_id: key_id,
+      key_secret: key_secret,
+    });
+
+    const options = req.body;
+
+    const order = await razorPay.orders.create(options);
+
+    if (!order) {
+      res.status(500).send("Error!");
+    }
+
+    res.status(200).send(order);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+
+app.post("/validate", async (req, res ) => {
+  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+    req.body;
+
+    if(!key_secret){
+      res.status(404).send("Secret Key Not Found")
+    }
+
+  const sha = crypto.createHmac("sha256", key_secret);
+  //order_id + "|" + razorpay_payment_id
+  sha.update(`${razorpay_order_id}|${razorpay_payment_id}`);
+  const digest = sha.digest("hex");
+  if (digest !== razorpay_signature) {
+    return res.status(400).json({ msg: "Transaction is not legit!" });
+  }
+
+  res.json({
+    msg: "success",
+    orderId: razorpay_order_id,
+    paymentId: razorpay_payment_id,
+  });
+});
